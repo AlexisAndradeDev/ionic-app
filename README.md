@@ -4,7 +4,7 @@ Ionic/Angular application developed as a college project.
 
 ## Objetivo de la aplicación
 
-Esta aplicación está enfocada deportistas que quieren llevar un registro de sus progresos de fuerza, resistencia y explosivid.
+Esta aplicación está enfocada deportistas que quieren llevar un registro de sus progresos de fuerza, resistencia y explosividad.
 Tiene como objetivo apoyar en el progreso de la condición atlética de los deportistas.
 
 ## Funcionalidades
