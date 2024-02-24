@@ -18,11 +18,11 @@ const routes: Routes = [
   {
     path: 'logout',
     loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule)
-  },
-  {
-    path: 'admin',
-    loadChildren: () => import('./admin/admin.module').then( m => m.AdminPageModule)
-  },
+  },  {
+    path: 'rutinas',
+    loadChildren: () => import('./rutinas/rutinas.module').then( m => m.RutinasPageModule)
+  }
+
 ];
 
 @NgModule({
