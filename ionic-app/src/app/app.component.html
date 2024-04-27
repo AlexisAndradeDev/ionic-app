@@ -1,3 +1,33 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start" contentId="main-content">
+    <ion-content class="ion-padding">
+      <ion-list>
+        <ion-item>
+          <a class="side-menu-link" routerLink="/home">Inicio</a>
+        </ion-item>
+        <ion-item>
+          <a class="side-menu-link" routerLink="/rutinas">Rutinas</a>
+        </ion-item>
+        <ion-item>
+          <a class="side-menu-link" routerLink="/logout">Salir de sesión</a>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" id="main-content">
+    <ion-header [translucent]="true">
+      <ion-toolbar color="primary">
+        <ion-title>{{ title }}</ion-title>
+        <ion-buttons slot="start">
+          <ion-menu-button color="light" size="small" fill="outline" shape="round"><ion-icon
+              name="menu"></ion-icon></ion-menu-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-router-outlet></ion-router-outlet>
+    </ion-content>
+  </div>
 </ion-app>
