@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
+import { RouteReuseStrategy, TitleStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
@@ -12,6 +12,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { PageTitleStrategy } from './strategies/page-title.strategy';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,11 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     MatSidenavModule, MatToolbarModule, MatIconModule, MatButtonModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideAnimationsAsync()],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: TitleStrategy, useClass: PageTitleStrategy },
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
