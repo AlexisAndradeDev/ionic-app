@@ -5,6 +5,7 @@ import { SeguridadRutaGuard } from './guard/seguridad-ruta.guard';
 const routes: Routes = [
   {
     path: 'home',
+    title: 'Inicio',
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
@@ -14,19 +15,23 @@ const routes: Routes = [
   },
   {
     path: 'login',
+    title: 'Iniciar sesión',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'logout',
+    title: 'Cerrar sesión',
     loadChildren: () => import('./logout/logout.module').then( m => m.LogoutPageModule)
   },
   {
     path: 'rutinas',
+    title: 'Rutinas',
     loadChildren: () => import('./rutinas/rutinas.module').then( m => m.RutinasPageModule),
     canActivate: [SeguridadRutaGuard]
   },
   {
     path: 'register',
+    title: 'Registro',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   }
 
