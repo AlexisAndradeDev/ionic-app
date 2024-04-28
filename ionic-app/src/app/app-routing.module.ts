@@ -27,12 +27,17 @@ const routes: Routes = [
     path: 'rutinas',
     title: 'Rutinas',
     loadChildren: () => import('./rutinas/rutinas.module').then( m => m.RutinasPageModule),
-    canActivate: [SeguridadRutaGuard]
+    // canActivate: [SeguridadRutaGuard]
   },
   {
     path: 'register',
     title: 'Registro',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: '**',
+    title: "Error 404 - Página no encontrada",
+    loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
   }
 
 ];
