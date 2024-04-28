@@ -27,7 +27,7 @@ const routes: Routes = [
     path: 'rutinas',
     title: 'Rutinas',
     loadChildren: () => import('./rutinas/rutinas.module').then( m => m.RutinasPageModule),
-    // canActivate: [SeguridadRutaGuard]
+    canActivate: [SeguridadRutaGuard]
   },
   {
     path: 'register',
