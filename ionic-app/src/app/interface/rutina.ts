@@ -1,7 +1,7 @@
 import { Ejercicio } from "./ejercicio";
 
 export interface Rutina {
-    name: string;
+    nombre: string;
     ejercicios: Ejercicio[];
     fecha_creacion: Date;
 }
