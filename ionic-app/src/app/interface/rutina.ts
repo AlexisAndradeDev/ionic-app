@@ -3,5 +3,5 @@ import { Ejercicio } from "./ejercicio";
 export interface Rutina {
     nombre: string;
     ejercicios: Ejercicio[];
-    fecha_creacion: Date;
+    fecha_creacion: string;
 }
