@@ -14,10 +14,6 @@
     <ion-label>Nombre de la Rutina</ion-label>
     <ion-input [(ngModel)]="rutina.nombre" placeholder="Nombre de la Rutina"></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label>Fecha de Creación</ion-label>
-    <ion-label>{{fechaActual}}</ion-label>
-  </ion-item>
 
   <ion-list>
     <ion-item *ngFor="let ejercicio of rutina.ejercicios; let i = index">
