@@ -24,12 +24,20 @@ export class AuthService {
     });
   }
 
+  getFirebaseApp() {
+    return firebaseApp;
+  }
+
   hasSession() {
     return this.isLogged;
   }
 
   getStateAuth() {
     return this.auth;
+  }
+
+  getUserUID() {
+    return this.auth.currentUser?.uid;
   }
 
   onLogin(user: User): Promise<any> {

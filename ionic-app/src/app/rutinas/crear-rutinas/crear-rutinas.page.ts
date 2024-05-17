@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Ejercicio } from 'src/app/interface/ejercicio';
 import { Rutina } from 'src/app/interface/rutina';
+import { RutinasService } from 'src/app/service/rutinas.service';
 
 @Component({
   selector: 'app-crear-rutinas',
@@ -7,29 +10,14 @@ import { Rutina } from 'src/app/interface/rutina';
   styleUrls: ['./crear-rutinas.page.scss'],
 })
 export class CrearRutinasPage implements OnInit {
-  fechaActual: string;
-
-  constructor() {
-    this.fechaActual = this.obtenerFechaActual();
-  }
-
-
-  ngOnInit() {}
-
-  obtenerFechaActual(): string {
-    const fecha = new Date();
-    const año = fecha.getFullYear();
-    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0'); // Los meses comienzan desde 0
-    const dia = fecha.getDate().toString().padStart(2, '0');
-    return `${dia}/${mes}/${año}`;
-  }
-  
-
   rutina: Rutina = {
     nombre: '',
     ejercicios: [],
-    fecha_creacion: '',
   };
+
+  constructor(private rutinasService: RutinasService, private router: Router) {}
+
+  ngOnInit() {}
 
   agregarEjercicio() {
     this.rutina.ejercicios.push({
@@ -45,7 +33,13 @@ export class CrearRutinasPage implements OnInit {
   }
 
   guardarRutina() {
-    console.log('Rutina guardada:', this.rutina);
-    // Aquí puedes agregar la lógica para guardar la rutina, como hacer una petición HTTP a tu backend
+    try {
+      this.rutinasService.createRutina(this.rutina);
+      alert("Rutina creada con éxito.");
+      this.router.navigate(["rutinas"])        
+    } catch (error) {
+      alert("Error al crear la rutina.");
+      console.error(error);
+    }
   }
 }
