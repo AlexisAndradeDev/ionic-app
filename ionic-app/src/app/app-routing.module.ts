@@ -38,7 +38,7 @@ const routes: Routes = [
     path: '**',
     title: "Error 404 - Página no encontrada",
     loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
-  }
+  },
 
 ];
 
