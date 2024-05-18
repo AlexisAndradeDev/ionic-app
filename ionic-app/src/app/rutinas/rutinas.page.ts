@@ -40,4 +40,8 @@ export class RutinasPage implements OnInit {
     });
     this.changeDetection.detectChanges();
   }
+
+  ionViewWillEnter(){
+    this.refresh();
+  }
 }
