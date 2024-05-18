@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Rutina } from '../interface/rutina';
+import { RutinasService } from '../service/rutinas.service';
 
 @Component({
   selector: 'app-rutinas',
@@ -8,9 +10,14 @@ import { Router } from '@angular/router';
 })
 export class RutinasPage implements OnInit {
 
-  constructor(private router: Router) { }
+  rutinas: Rutina[] =[]
+
+  constructor(private router: Router, private rutinasService: RutinasService) { }
 
   ngOnInit() {
+    this.rutinasService.getAllRutinas().subscribe(rutinas => {
+      this.rutinas = rutinas;
+    });
   }
 
   redirectLogout() {
