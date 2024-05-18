@@ -37,7 +37,9 @@ export class AuthService {
   }
 
   getUserUID() {
-    return this.auth.currentUser?.uid;
+    let uid = this.auth.currentUser?.uid;
+    if (uid) return uid;
+    else throw new Error("Couldn't get user UID.");
   }
 
   onLogin(user: User): Promise<any> {

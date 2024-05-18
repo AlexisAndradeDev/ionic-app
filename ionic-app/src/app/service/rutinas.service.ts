@@ -22,12 +22,12 @@ export class RutinasService {
     const rutinaTemp: any = {
       nombre: rutina.nombre,
       ejercicios: rutina.ejercicios,
+      uid: rutina.uid,
       fecha_creacion: this.getFechaActualServidor(),
     };
     const docRef = await addDoc(collection(this.db, 'rutina'),
       {
-        ...rutinaTemp,
-        // uid: this.authService.getUserUID() para manejar permisos después
+        ...rutinaTemp
       }
     );
     console.log("Documento escrito con id: " + docRef.id);

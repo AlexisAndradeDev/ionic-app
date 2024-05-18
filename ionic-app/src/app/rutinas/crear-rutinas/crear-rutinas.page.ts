@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Ejercicio } from 'src/app/interface/ejercicio';
 import { Rutina } from 'src/app/interface/rutina';
+import { AuthService } from 'src/app/service/auth.service';
 import { RutinasService } from 'src/app/service/rutinas.service';
 
 @Component({
@@ -13,9 +14,10 @@ export class CrearRutinasPage implements OnInit {
   rutina: Rutina = {
     nombre: '',
     ejercicios: [],
+    uid: this.authService.getUserUID(),
   };
 
-  constructor(private rutinasService: RutinasService, private router: Router) {}
+  constructor(private rutinasService: RutinasService, private router: Router, private authService: AuthService) {}
 
   ngOnInit() {}
 
