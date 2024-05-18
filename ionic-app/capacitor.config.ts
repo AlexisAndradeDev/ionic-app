@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'ionic-app',
+  appId: 'nautica.gym',
+  appName: 'Nautica Gym',
   webDir: 'www',
   server: {
     androidScheme: 'https'
