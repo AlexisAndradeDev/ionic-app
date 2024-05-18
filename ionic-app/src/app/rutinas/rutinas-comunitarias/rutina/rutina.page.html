@@ -1,0 +1,43 @@
+<ion-content *ngIf="rutina">
+  <ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-title>Rutina comunitaria</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content [fullscreen]="true">
+    <ion-item>
+      <ion-label>Nombre</ion-label>
+      <ion-input [(ngModel)]="rutina.nombre" placeholder="Nombre de la Rutina"></ion-input>
+    </ion-item>
+  
+    <ion-list>
+      <ion-item *ngFor="let ejercicio of rutina.ejercicios; let i = index">
+        <div>
+          <ion-label>Ejercicio {{ i + 1 }}</ion-label>
+        </div>
+        <div>
+        <ion-label>Nombre del ejercicio</ion-label>
+        <ion-input [(ngModel)]="ejercicio.nombre" placeholder="Nombre"></ion-input>
+        <ion-label>Series</ion-label>
+        <ion-input [(ngModel)]="ejercicio.series" placeholder="Series" type="number"></ion-input>
+        <ion-label>Repeticiones</ion-label>
+        <ion-input [(ngModel)]="ejercicio.repeticiones" placeholder="Repeticiones" type="number"></ion-input>
+        <ion-label>Descanso (s)</ion-label>
+        <ion-input [(ngModel)]="ejercicio.descanso_en_segundos" placeholder="Descanso (s)" type="number"></ion-input>
+        <ion-button color="danger" (click)="eliminarEjercicio(i)">Eliminar</ion-button>
+      </div>
+      </ion-item>
+    </ion-list>
+    <ion-button (click)="agregarEjercicio()">Agregar Ejercicio</ion-button>
+    <ion-button (click)="actualizarRutina()">Actualizar Rutina</ion-button>
+</ion-content>
+
+<ion-card *ngIf="!rutina">
+  <ion-card-header>
+    <ion-card-title>Rutina no encontrada</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p>No se pudo encontrar la rutina solicitada.</p>
+  </ion-card-content>
+</ion-card>

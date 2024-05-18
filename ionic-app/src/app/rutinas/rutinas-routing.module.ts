@@ -14,6 +14,10 @@ const routes: Routes = [
   },  {
     path: 'rutina',
     loadChildren: () => import('./rutina/rutina.module').then( m => m.RutinaPageModule)
+  },
+  {
+    path: 'rutinas-comunitarias',
+    loadChildren: () => import('./rutinas-comunitarias/rutinas-comunitarias.module').then( m => m.RutinasComunitariasPageModule)
   }
 
 

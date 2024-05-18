@@ -1,13 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Rutinas</ion-title>
+    <ion-title>Rutinas comunitarias</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <div style="margin: 1rem; margin-top: 2rem;">
-  <ion-button routerLink="/rutinas/crear-rutinas"><ion-icon name="add-circle"></ion-icon></ion-button>
+  <ion-button routerLink="/rutinas/rutinas-comunitarias/crear-rutinas"><ion-icon name="add-circle"></ion-icon></ion-button>
   <ion-button (click)="refresh()"><ion-icon name="refresh-outline"></ion-icon></ion-button>
-  <ion-button routerLink="/rutinas/rutinas-comunitarias">Rutinas comunitarias</ion-button>
+  <ion-button routerLink="/rutinas">Mis rutinas</ion-button>
 </div>
 
 <ion-content>
@@ -15,8 +15,7 @@
     <ion-item *ngFor="let rutina of rutinas">
       <ion-label>
         <h2>{{ rutina.nombre }}</h2>
-        <p>Fecha de creación: {{ rutina.fecha_creacion | date }}</p>
-        <ion-button [routerLink]="['/rutinas/rutina', rutina.id]">Ver</ion-button>
+        <ion-button [routerLink]="['/rutinas/rutinas-comunitarias/rutina', rutina.id]">Ver</ion-button>
         <ion-button type="button" color="danger" (click)="deleteRutina(rutina.id)">X</ion-button>
       </ion-label>
     </ion-item>
