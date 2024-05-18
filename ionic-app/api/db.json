@@ -1,16 +1,28 @@
 {
-    "rutinas": [
+  "rutinas": [
+    {
+      "id": "1",
+      "nombre": "Push Pull Leg",
+      "ejercicios": [
         {
-            "id": 1,
-            "nombre": "Push Pull Leg",
-            "ejercicios": [
-                {
-                    "nombre": "Pull Ups",
-                    "repeticiones": 12,
-                    "series": 3,
-                    "descanso_en_segundos": 150
-                }
-            ]
+          "nombre": "Pull Ups",
+          "repeticiones": 12,
+          "series": 3,
+          "descanso_en_segundos": 180
         }
-    ]
+      ]
+    },
+    {
+      "id": "51ab434d-4c57-469b-96b1-311c5c1dfeae",
+      "nombre": "Torso/Pierna",
+      "ejercicios": [
+        {
+          "nombre": "Press de banca",
+          "series": 3,
+          "repeticiones": 8,
+          "descanso_en_segundos": 150
+        }
+      ]
+    }
+  ]
 }

@@ -28,11 +28,15 @@ export class RutinasComunitariasService {
   }
 
   getRutina(id: string): Observable<Rutina> {
-    return this.http.get<any>(`http://localhost:3000/rutina/${id}`);
+    return this.http.get<any>(`http://localhost:3000/rutinas/${id}`);
   }
 
-  deleteRutina(id: string, rutinas: Rutina[]): Observable<Rutina> {
-    return this.http.delete<any>(`http://localhost:3000/rutina/${id}`);
+  deleteRutina(id: string, rutinas: Rutina[]): [Observable<Rutina>, Rutina[]] {
+    rutinas = rutinas.filter((rutina: Rutina) => {
+      if (rutina.id === id) return false
+      else return true
+    })
+    return [this.http.delete<any>(`http://localhost:3000/rutinas/${id}`), rutinas];
   }
 
   actualizarRutina(rutina: Rutina, id: string): Observable<Rutina> {
@@ -41,8 +45,6 @@ export class RutinasComunitariasService {
       nombre: rutina.nombre,
       ejercicios: rutina.ejercicios,
     };
-    return this.http.put<any>(`http://localhost:3000/rutina/${id}`, {
-      ...rutinaTemp
-    });
+    return this.http.put<any>(`http://localhost:3000/rutinas/${id}`, rutinaTemp, {});
   }
 }

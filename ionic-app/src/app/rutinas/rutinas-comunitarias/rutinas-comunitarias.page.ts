@@ -20,14 +20,16 @@ export class RutinasComunitariasPage implements OnInit {
     });
   }
 
-  // deleteRutina(id?: string) {
-  //   if (id) {
-  //     this.rutinas = this.rutinasComunitariasService.deleteRutina(id, this.rutinas);
-  //     this.changeDetection.detectChanges();
-  //   } else {
-  //     alert("Rutina no encontrada.");
-  //   }
-  // }
+  deleteRutina(id?: string) {
+    if (id) {
+      let res = this.rutinasComunitariasService.deleteRutina(id, this.rutinas);
+      res[0].subscribe();
+      this.rutinas = res[1];
+      this.changeDetection.detectChanges();
+    } else {
+      alert("Rutina no encontrada.");
+    }
+  }
 
   refresh() {
     this.rutinasComunitariasService.getAllRutinas().subscribe(rutinas => {

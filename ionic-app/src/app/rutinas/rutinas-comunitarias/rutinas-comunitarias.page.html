@@ -15,8 +15,8 @@
     <ion-item *ngFor="let rutina of rutinas">
       <ion-label>
         <h2>{{ rutina.nombre }}</h2>
-        <ion-button [routerLink]="['/rutinas-comunitarias/rutina', rutina.id]">Ver</ion-button>
-        <!-- <ion-button type="button" color="danger" (click)="deleteRutina(rutina.id)">X</ion-button> -->
+        <ion-button [routerLink]="['/rutinas/rutinas-comunitarias/rutina', rutina.id]">Ver</ion-button>
+        <ion-button type="button" color="danger" (click)="deleteRutina(rutina.id)">X</ion-button>
       </ion-label>
     </ion-item>
   </ion-list>
