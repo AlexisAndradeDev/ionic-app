@@ -13,12 +13,6 @@
       <ion-label>
         <h2>{{ rutina.nombre }}</h2>
         <p>Fecha de creación: {{ rutina.fecha_creacion | date }}</p>
-        <p>Ejercicios:</p>
-        <ul>
-          <li *ngFor="let ejercicio of rutina.ejercicios">
-            {{ ejercicio.nombre }} - Series: {{ ejercicio.series }}, Repeticiones: {{ ejercicio.repeticiones }}, Descanso: {{ ejercicio.descanso_en_segundos }} seg.
-          </li>
-        </ul>
         <ion-button [routerLink]="['/rutinas/rutina', rutina.id]">Ver</ion-button>
       </ion-label>
     </ion-item>

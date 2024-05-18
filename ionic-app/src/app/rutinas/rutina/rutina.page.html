@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="rutina; else noRutina">
+<ion-content *ngIf="rutina">
   <ion-card>
     <ion-card-header>
       <ion-card-title>{{ rutina.nombre }}</ion-card-title>
@@ -14,10 +14,7 @@
       <p><strong>ID del Usuario:</strong> {{ rutina.uid }}</p>
 
       <ion-list>
-        <ion-list-header>
-          <ion-label>Ejercicios</ion-label>
-        </ion-list-header>
-        <ion-item *ngFor="let ejercicio of rutina.ejercicios">
+        <ion-item class="ejercicio" *ngFor="let ejercicio of rutina.ejercicios">
           <ion-label>
             <h2>{{ ejercicio.nombre }}</h2>
             <p>Series: {{ ejercicio.series }}</p>
@@ -30,13 +27,11 @@
   </ion-card>
 </ion-content>
 
-<ng-template #noRutina>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>Rutina no encontrada</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
-      <p>No se pudo encontrar la rutina solicitada.</p>
-    </ion-card-content>
-  </ion-card>
-</ng-template>
+<ion-card *ngIf="!rutina">
+  <ion-card-header>
+    <ion-card-title>Rutina no encontrada</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p>No se pudo encontrar la rutina solicitada.</p>
+  </ion-card-content>
+</ion-card>
