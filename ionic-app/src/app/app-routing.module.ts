@@ -33,7 +33,12 @@ const routes: Routes = [
     path: 'register',
     title: 'Registro',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
-  }
+  },
+  {
+    path: '**',
+    title: "Error 404 - Página no encontrada",
+    loadChildren: () => import('./not-found/not-found.module').then( m => m.NotFoundPageModule)
+  },
 
 ];
 

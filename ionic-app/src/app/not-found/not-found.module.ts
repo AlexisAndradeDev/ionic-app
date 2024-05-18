@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RutinasPageRoutingModule } from './rutinas-routing.module';
+import { NotFoundPageRoutingModule } from './not-found-routing.module';
 
-import { RutinasPage } from './rutinas.page';
+import { NotFoundPage } from './not-found.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RutinasPageRoutingModule,
+    NotFoundPageRoutingModule
   ],
-  declarations: [RutinasPage]
+  declarations: [NotFoundPage]
 })
-export class RutinasPageModule {}
+export class NotFoundPageModule {}

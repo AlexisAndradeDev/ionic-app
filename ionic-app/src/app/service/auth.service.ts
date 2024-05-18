@@ -24,12 +24,22 @@ export class AuthService {
     });
   }
 
+  getFirebaseApp() {
+    return firebaseApp;
+  }
+
   hasSession() {
     return this.isLogged;
   }
 
   getStateAuth() {
     return this.auth;
+  }
+
+  getUserUID() {
+    let uid = this.auth.currentUser?.uid;
+    if (uid) return uid;
+    else throw new Error("Couldn't get user UID.");
   }
 
   onLogin(user: User): Promise<any> {
