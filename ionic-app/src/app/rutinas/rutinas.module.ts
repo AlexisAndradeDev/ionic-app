@@ -13,7 +13,7 @@ import { RutinasPage } from './rutinas.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    RutinasPageRoutingModule
+    RutinasPageRoutingModule,
   ],
   declarations: [RutinasPage]
 })

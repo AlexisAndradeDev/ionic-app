@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { Rutina } from '../interface/rutina';
 import { RutinasService } from '../service/rutinas.service';
@@ -12,7 +12,8 @@ export class RutinasPage implements OnInit {
 
   rutinas: Rutina[] = [];
 
-  constructor(private router: Router, private rutinasService: RutinasService) { }
+  constructor(private router: Router, private rutinasService: RutinasService,
+    private changeDetection: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.rutinasService.getAllRutinas().subscribe(rutinas => {
@@ -22,5 +23,14 @@ export class RutinasPage implements OnInit {
 
   redirectLogout() {
     this.router.navigate(['/logout']);
+  }
+
+  deleteRutina(id?: string) {
+    if (id) {
+      this.rutinas = this.rutinasService.deleteRutina(id, this.rutinas);
+      this.changeDetection.detectChanges();
+    } else {
+      alert("Rutina no encontrada.");
+    }
   }
 }
