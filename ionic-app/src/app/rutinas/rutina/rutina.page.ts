@@ -26,4 +26,29 @@ export class RutinaPage implements OnInit {
   redirectNotFound() {
     this.router.navigate(["not-found"]);
   }
+
+  agregarEjercicio() {
+    this.rutina?.ejercicios.push({
+      nombre: '',
+      series: 0,
+      repeticiones: 0,
+      descanso_en_segundos: 0,
+    });
+  }
+
+  eliminarEjercicio(index: number) {
+    this.rutina?.ejercicios.splice(index, 1);
+  }
+
+  actualizarRutina() {
+    try {
+      if (this.rutina) {
+        this.rutinasService.actualizarRutina(this.rutina, this.id);
+        alert("Rutina actualizada con éxito.");
+      }
+    } catch (error) {
+      alert("Error al crear la rutina.");
+      console.error(error);
+    }
+  }
 }

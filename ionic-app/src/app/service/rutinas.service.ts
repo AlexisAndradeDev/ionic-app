@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { getFirestore, collection, addDoc, getDocs, serverTimestamp, Timestamp, collectionGroup, doc, getDoc, deleteDoc } from 'firebase/firestore'
+import { getFirestore, collection, addDoc, getDocs, serverTimestamp, Timestamp, collectionGroup, doc, getDoc, deleteDoc, setDoc } from 'firebase/firestore'
 import { AuthService } from './auth.service';
 import { Rutina } from '../interface/rutina';
 import { Observable, from, map } from 'rxjs';
@@ -84,5 +84,22 @@ export class RutinasService {
       else return true
     })
     return rutinas;
+  }
+
+  async actualizarRutina(rutina: Rutina, id: string) {
+    if (rutina.id && rutina.fecha_creacion) {
+      const docRef = doc(this.db, 'rutina', rutina.id);
+      const rutinaTemp: any = {
+        nombre: rutina.nombre,
+        ejercicios: rutina.ejercicios,
+        id: id,
+        uid: rutina.uid,
+        fecha_creacion: Timestamp.fromMillis(Date.parse(rutina.fecha_creacion)),
+      };
+      setDoc(docRef, rutinaTemp);
+    } else {
+      throw new Error("id de la rutina no existe");
+      
+    }
   }
 }
