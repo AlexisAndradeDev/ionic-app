@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { getFirestore, collection, addDoc, getDocs, serverTimestamp, Timestamp, collectionGroup } from 'firebase/firestore'
+import { getFirestore, collection, addDoc, getDocs, serverTimestamp, Timestamp, collectionGroup, getDoc, doc } from 'firebase/firestore'
 import { AuthService } from './auth.service';
 import { Rutina } from '../interface/rutina';
 import { Observable, from, map } from 'rxjs';
+
 
 
 @Injectable({
@@ -57,4 +58,12 @@ export class RutinasService {
       })
     );
   }
+
+
+
+
 }
+
+
+
+

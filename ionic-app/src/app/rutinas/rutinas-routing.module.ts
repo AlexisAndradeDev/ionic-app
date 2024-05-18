@@ -7,10 +7,15 @@ const routes: Routes = [
   {
     path: '',
     component: RutinasPage
-  },  {
+  },
+  {
     path: 'crear-rutinas',
     loadChildren: () => import('./crear-rutinas/crear-rutinas.module').then( m => m.CrearRutinasPageModule)
+  },  {
+    path: 'rutina',
+    loadChildren: () => import('./rutina/rutina.module').then( m => m.RutinaPageModule)
   }
+
 
 ];
 
