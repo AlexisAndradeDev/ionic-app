@@ -33,4 +33,11 @@ export class RutinasPage implements OnInit {
       alert("Rutina no encontrada.");
     }
   }
+
+  refresh() {
+    this.rutinasService.getAllRutinas().subscribe(rutinas => {
+      this.rutinas = rutinas;
+    });
+    this.changeDetection.detectChanges();
+  }
 }
