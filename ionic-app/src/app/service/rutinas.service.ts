@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { getFirestore, collection, addDoc, getDocs, serverTimestamp, Timestamp, collectionGroup, doc, getDoc } from 'firebase/firestore'
+import { getFirestore, collection, addDoc, getDocs, serverTimestamp, Timestamp, collectionGroup, doc, getDoc, deleteDoc } from 'firebase/firestore'
 import { AuthService } from './auth.service';
 import { Rutina } from '../interface/rutina';
 import { Observable, from, map } from 'rxjs';
@@ -74,5 +74,15 @@ export class RutinasService {
     } else {
       return undefined;
     }
+  }
+
+  deleteRutina(id: string, rutinas: Rutina[]) {
+    const docRef = doc(this.db, 'rutina', id);
+    deleteDoc(docRef);
+    rutinas = rutinas.filter((rutina: Rutina) => {
+      if (rutina.id === id) return false
+      else return true
+    })
+    return rutinas;
   }
 }
