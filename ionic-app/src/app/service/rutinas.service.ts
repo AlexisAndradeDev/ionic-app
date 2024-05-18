@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { getFirestore, collection, addDoc, getDocs, serverTimestamp, Timestamp, collectionGroup, getDoc, doc } from 'firebase/firestore'
+import { getFirestore, collection, addDoc, getDocs, serverTimestamp, Timestamp, collectionGroup, doc, getDoc } from 'firebase/firestore'
 import { AuthService } from './auth.service';
 import { Rutina } from '../interface/rutina';
 import { Observable, from, map } from 'rxjs';
-
 
 
 @Injectable({
@@ -59,11 +58,21 @@ export class RutinasService {
     );
   }
 
+  async getRutina(id: string): Promise<Rutina | undefined> {
+    const docRef = doc(this.db, 'rutina', id);
+    const docSnap = await getDoc(docRef);
 
-
-
+    if (docSnap.exists()) {
+      let data = docSnap.data();
+      return {
+        nombre: data['nombre'],
+        ejercicios: data['ejercicios'],
+        fecha_creacion: (data['fecha_creacion'] as Timestamp).toDate().toString(),
+        uid: data['uid'],
+        id: id
+      } as unknown as Rutina;
+    } else {
+      return undefined;
+    }
+  }
 }
-
-
-
-
