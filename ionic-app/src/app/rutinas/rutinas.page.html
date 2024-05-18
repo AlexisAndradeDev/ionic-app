@@ -1,3 +1,25 @@
 <div style="margin: 1rem; margin-top: 2rem;">
   <ion-button routerLink="/rutinas/crear-rutinas"><ion-icon name="add-circle"></ion-icon></ion-button>
 </div>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Rutinas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let rutina of rutinas">
+      <ion-label>
+        <h2>{{ rutina.nombre }}</h2>
+        <p>Fecha de creación: {{ rutina.fecha_creacion | date }}</p>
+        <p>Ejercicios:</p>
+        <ul>
+          <li *ngFor="let ejercicio of rutina.ejercicios">
+            {{ ejercicio.nombre }} - Series: {{ ejercicio.series }}, Repeticiones: {{ ejercicio.repeticiones }}, Descanso: {{ ejercicio.descanso_en_segundos }} seg.
+          </li>
+        </ul>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
