@@ -11,7 +11,7 @@ import { Observable, from, map } from 'rxjs';
 export class RutinasService {
   db: any;
 
-  constructor(private authService: AuthService) { 
+  constructor(private authService: AuthService) {
     this.db = getFirestore(authService.getFirebaseApp());
   }
 
@@ -36,19 +36,25 @@ export class RutinasService {
 
   getAllRutinas(): Observable<Rutina[]> {
     const rutinaCollection = collection(this.db, 'rutina');
+
     return from(getDocs(rutinaCollection)).pipe(
       map((querySnapshot: { docs: any[]; }) => {
-        return querySnapshot.docs.map(doc => {
-          const data = doc.data();
-          return {
-            nombre: data.nombre,
-            ejercicios: data.ejercicios,
-            fecha_creacion: (data.fecha_creacion as Timestamp).toDate().toString(),
-          } as unknown as Rutina;
-        });
+        return querySnapshot.docs.map(
+          doc => {
+            const data = doc.data();
+            if (data.uid === this.authService.getUserUID()) {
+              return {
+                nombre: data.nombre,
+                ejercicios: data.ejercicios,
+                fecha_creacion: (data.fecha_creacion as Timestamp).toDate().toString(),
+                uid: data.uid,
+                id: doc.id
+              } as unknown as Rutina;
+            } else {
+              return undefined;
+            }
+          }).filter((rutina): rutina is Rutina => rutina !== undefined);
       })
     );
   }
-
-
 }

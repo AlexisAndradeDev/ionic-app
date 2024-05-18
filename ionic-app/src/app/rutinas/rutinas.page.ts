@@ -10,7 +10,7 @@ import { RutinasService } from '../service/rutinas.service';
 })
 export class RutinasPage implements OnInit {
 
-  rutinas: Rutina[] =[]
+  rutinas: Rutina[] = [];
 
   constructor(private router: Router, private rutinasService: RutinasService) { }
 

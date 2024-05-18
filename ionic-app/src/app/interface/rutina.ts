@@ -5,4 +5,5 @@ export interface Rutina {
     ejercicios: Ejercicio[];
     fecha_creacion?: string;
     uid: string;
+    id?: string;
 }
